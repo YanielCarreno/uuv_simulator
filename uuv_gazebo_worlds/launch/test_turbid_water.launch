@@ -25,27 +25,53 @@
         <rosparam subst_value="true">
             meshes:
                 seafloor:
-                    plane: [300, 300, 0.1]
+                    plane: [100, 100, 0.1]
                     pose:
                         position: [0, 0, -100]
                 north:
-                    plane: [0.1, 300, 100]
+                    plane: [0.1, 100, 100]
                     pose:
-                        position: [300, 0, -50]
+                        position: [100, 0, -50]
                 south:
-                    plane: [0.1, 300, 100]
+                    plane: [0.1, 100, 100]
                     pose:
-                        position: [-150, 0, -50]
+                        position: [-50, 0, -50]
                 west:
-                    plane: [300, 0.1, 100]
-                    pose:
-                        position: [0, -150, -50]
+                    plane: [100, 0.1, 100]
+                    pose:   
+                        position: [0, -50, -50]
                 east:
-                    plane: [300, 0.1, 100]
+                    plane: [100, 0.1, 100]
                     pose:
-                        position: [0, 150, -50]
+                        position: [0, 50, -50]
         </rosparam>
     </node>
+
+    <!-- combining launch parameters for including a rexrov target into the underwater world-->
+    <arg name="debug" default="0"/>
+
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
+    <arg name="z" default="-20"/>
+    <arg name="roll" default="0.0"/>
+    <arg name="pitch" default="0.0"/>
+    <arg name="yaw" default="0.0"/>
+
+    <arg name="uuv_mode" default="default"/>
+    <arg name="uuv_namespace" default="rexrov"/>
+    <arg name="use_ned_frame" default="false"/>
+
+    <include file="$(find uuv_descriptions)/launch/upload_rexrov_$(arg uuv_mode).launch">
+        <arg name="debug" value="$(arg debug)"/>
+        <arg name="x" value="$(arg x)"/>
+        <arg name="y" value="$(arg y)"/>
+        <arg name="z" value="$(arg z)"/>
+        <arg name="roll" value="$(arg roll)"/>
+        <arg name="pitch" value="$(arg pitch)"/>
+        <arg name="yaw" value="$(arg yaw)"/>
+        <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
+        <arg name="namespace" value="$(arg uuv_namespace)"/>
+  </include>
 
     <group if="$(arg set_timeout)">
         <include file="$(find uuv_assistants)/launch/set_simulation_timer.launch">
