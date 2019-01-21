@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(uuv_sensor_ros_plugins_msgs)
 
 find_package(catkin REQUIRED COMPONENTS
+    std_msgs
     geometry_msgs
     message_generation)
 
@@ -13,6 +14,8 @@ add_message_files(
   PositionWithCovarianceStamped.msg
   ChemicalParticleConcentration.msg
   Salinity.msg
+  Sonar.msg
+  SonarStamped.msg
 )
 
 add_service_files(
@@ -23,6 +26,7 @@ add_service_files(
 
 generate_messages(
   DEPENDENCIES
+  std_msgs
   geometry_msgs
 )
 
