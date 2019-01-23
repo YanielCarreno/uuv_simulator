@@ -39,7 +39,7 @@ void FLSonarRos::Load(sensors::SensorPtr _parent, sdf::ElementPtr _sdf)
 
   std::string worldName = this->sensor->WorldName();
 
-  this->world = physics::get_world("default");
+  //this->world = physics::get_world("default");
   parent = this->world->GetEntity(this->sensor->ParentName());
 
   GZ_ASSERT(parent, "This parent does not exisst");
