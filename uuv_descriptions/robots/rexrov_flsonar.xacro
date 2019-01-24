@@ -21,7 +21,8 @@
   <!-- Include the ROV macro file -->
   <xacro:include filename="$(find uuv_descriptions)/urdf/rexrov_base.xacro"/>
   <xacro:include filename="$(find uuv_descriptions)/urdf/rexrov.gazebo.xacro"/>
-
+  <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/flsonar_snippets.xacro"/>
+  
   <!-- Create the RexROV vehicle -->
   <xacro:rexrov_base
     namespace="$(arg namespace)"
@@ -39,9 +40,11 @@
     </gazebo>
   </xacro:rexrov_base>
 
-  <xacro:fl_multibeam_generic namespace="$(arg namespace)" parent_link="$(arg namespace)/base_link">
+  <xacro:forward_multibeam_sonar_m450_130 namespace="$(arg namespace)" parent_link="$(arg namespace)/base_link">
     <origin xyz="1.4 0 0.65" rpy="0 0 0"/>
-  </xacro:fl_multibeam_generic>
+  </xacro:forward_multibeam_sonar_m450_130>
+
+
 
   <!-- Joint state publisher plugin -->
   <xacro:default_joint_state_publisher namespace="$(arg namespace)" update_rate="50"/>
