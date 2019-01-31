@@ -18,6 +18,7 @@
 
     <include file="$(find uuv_assistants)/launch/publish_world_ned_frame.launch"/>
 
+    <!--Node for parameter change is not working as intended!
     <node name="publish_world_models"
         pkg="uuv_assistants"
         type="publish_world_models.py"
@@ -46,32 +47,73 @@
                         position: [0, 50, -50]
         </rosparam>
     </node>
+    -->
+
 
     <!-- combining launch parameters for including a rexrov target into the underwater world-->
-    <arg name="debug" default="0"/>
+    
+    <!-- Section dedicated to launch Modified Test RexRov. 
+    Remember to first launch Gazebo with a underwater world model
+    Example:
+    >> roslaunch uuv_description ocean_waves.launch
+        or
+    >> roslaunch uuv_description empty_underwater_world.launch
 
+    The default joystick configuration is set for the XBox 360 controller
+    -->
+    <arg name="namespace" default="rexrov"/>
     <arg name="x" default="0"/>
     <arg name="y" default="0"/>
-    <arg name="z" default="-20"/>
-    <arg name="roll" default="0.0"/>
-    <arg name="pitch" default="0.0"/>
+    <arg name="z" default="-50"/>
     <arg name="yaw" default="0.0"/>
+    <arg name="joy_id" default="0"/>
+    <arg name="axis_yaw" default="0"/>
+    <arg name="axis_x" default="4"/>
+    <arg name="axis_y" default="3"/>
+    <arg name="axis_z" default="1"/>
 
-    <arg name="uuv_mode" default="default"/>
-    <arg name="uuv_namespace" default="rexrov"/>
-    <arg name="use_ned_frame" default="false"/>
-
-    <include file="$(find uuv_descriptions)/launch/upload_rexrov_$(arg uuv_mode).launch">
-        <arg name="debug" value="$(arg debug)"/>
+    <include file="$(find uuv_descriptions)/launch/upload_rexrov_default.launch">
+        <arg name="mode" value="test"/>
+        <arg name="namespace" value="$(arg namespace)"/>
         <arg name="x" value="$(arg x)"/>
         <arg name="y" value="$(arg y)"/>
         <arg name="z" value="$(arg z)"/>
-        <arg name="roll" value="$(arg roll)"/>
-        <arg name="pitch" value="$(arg pitch)"/>
         <arg name="yaw" value="$(arg yaw)"/>
-        <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
-        <arg name="namespace" value="$(arg uuv_namespace)"/>
-  </include>
+    </include>
+
+    <include file="$(find uuv_thruster_manager)/launch/thruster_manager.launch">
+        <arg name="uuv_name" value="$(arg namespace)" />
+        <arg name="model_name" value="rexrov" />
+    </include>
+
+    <group ns="$(arg namespace)">
+        <rosparam file="$(find uuv_control_cascaded_pid)/config/rexrov/inertial.yaml" command="load"/>
+        <rosparam file="$(find uuv_control_cascaded_pid)/config/rexrov/vel_pid_control.yaml" command="load"/>
+
+        <node pkg="uuv_control_cascaded_pid" type="AccelerationControl.py" name="acceleration_control"
+                output="screen">
+        <param name="tf_prefix" type="string" value="$(arg namespace)/" />
+        </node>
+
+        <node pkg="uuv_control_cascaded_pid" type="VelocityControl.py" name="velocity_control"
+            output="screen">
+        <remap from="odom" to="/$(arg namespace)/pose_gt"/>
+        <remap from="cmd_accel" to="/$(arg namespace)/cmd_accel"/>
+        </node>
+    </group>
+
+    <include file="$(find uuv_teleop)/launch/uuv_teleop.launch">
+        <arg name="uuv_name" value="$(arg namespace)"/>
+        <arg name="joy_id" value="$(arg joy_id)"/>
+        <arg name="output_topic" value="cmd_vel"/>
+        <arg name="message_type" value="twist"/>
+        <arg name="axis_yaw" value="$(arg axis_yaw)"/>
+        <arg name="axis_x" value="$(arg axis_x)"/>
+        <arg name="axis_y" value="$(arg axis_y)"/>
+        <arg name="axis_z" value="$(arg axis_z)"/>
+    </include>
+
+    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find uuv_gazebo)/rviz/rexrov_test_sonar.rviz"/>
 
     <group if="$(arg set_timeout)">
         <include file="$(find uuv_assistants)/launch/set_simulation_timer.launch">
