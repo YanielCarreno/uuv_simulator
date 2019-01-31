@@ -8,6 +8,8 @@ add_definitions(-std=c++11)
 find_package(catkin REQUIRED COMPONENTS
   uuv_gazebo_plugins
   sensor_msgs
+  sonar_msgs
+  image_transport
   geometry_msgs
   std_msgs
   roscpp
@@ -16,7 +18,8 @@ find_package(catkin REQUIRED COMPONENTS
   uuv_sensor_ros_plugins_msgs
   message_filters
   tf2_ros
-  tf2)
+  tf2
+  laser_geometry)
 
 find_package(Eigen3 REQUIRED)
 find_package(gazebo REQUIRED)

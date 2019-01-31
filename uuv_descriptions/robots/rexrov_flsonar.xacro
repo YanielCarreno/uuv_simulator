@@ -44,6 +44,9 @@
     <origin xyz="1.4 0 0.65" rpy="0 0 0"/>
   </xacro:forward_multibeam_sonar_m450_130>
 
+  <!--<xacro:fl_multibeam_generic namespace="$(arg namespace)" parent_link="$(arg namespace)/base_link">
+    <origin xyz="1.4 0 0.65" rpy="0 0 0"/>
+  </xacro:fl_multibeam_generic>-->
 
 
   <!-- Joint state publisher plugin -->

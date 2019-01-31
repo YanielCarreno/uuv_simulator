@@ -154,7 +154,9 @@
   <gazebo reference="${namespace}/sonar${suffix}_link">
     <sensor type="gpu_ray" name="sonar${suffix}">
       <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize>
+
+      <!--Change value here to make sonar beams visible or not-->
+      <visualize>true</visualize> 
       <update_rate>${update_rate}</update_rate>
       <ray>
         <scan>
@@ -217,7 +219,7 @@
     <gazebo reference="${namespace}/sonar${suffix}_link">
       <sensor name='FLSonar' type='camera'>
         <plugin name="SonarVisual" filename="libuuv_gazebo_ros_flsonar_plugin.so" >
-            <topic>${topic}</topic>
+            <topic>rexrov/FLSonar</topic>
             <debug>1</debug>
             <link_reference>${namespace}/sonar${suffix}_link</link_reference>
             <horizontal_fov>${fov}</horizontal_fov>
