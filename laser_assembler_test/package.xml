@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>laser_assembler</name>
+  <name>laser_assembler_test</name>
   <version>0.1.0</version>
   <description>simple laser assembler and to point cloud converter</description>
 

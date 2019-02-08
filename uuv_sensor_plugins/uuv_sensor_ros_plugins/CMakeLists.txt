@@ -8,7 +8,6 @@ add_definitions(-std=c++11)
 find_package(catkin REQUIRED COMPONENTS
   uuv_gazebo_plugins
   sensor_msgs
-  sonar_msgs
   image_transport
   geometry_msgs
   std_msgs
