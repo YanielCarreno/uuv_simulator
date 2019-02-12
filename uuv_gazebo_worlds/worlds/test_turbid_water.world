@@ -43,7 +43,7 @@
       <fog>
         <color>0.1 0.2 0.3 1.0</color>
         <type>linear</type>
-        <density>0.01</density>
+        <density>0.8</density>
         <start>10</start>
         <end>50</end>
       </fog>
