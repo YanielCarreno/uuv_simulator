@@ -89,7 +89,7 @@ def laser_sonar_cvt(laser_msg):
     snr_start_rad = degrees_to_rad(snr_start)
     snr_end = snr_start + fov_degrees
     snr_end_rad = degrees_to_rad(snr_end)
-    print(snr_start,snr_end)
+    #print(snr_start,snr_end)
 
     cv2.ellipse(cv_img, sonar_origin, (Im_height, Im_height), 0, snr_start, snr_end, 50, -1, 0)
 
