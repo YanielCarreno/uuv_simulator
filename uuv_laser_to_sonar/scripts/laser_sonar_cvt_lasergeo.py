@@ -98,7 +98,7 @@ def laser_sonar_cvt(laser_msg):
         cv2.circle(cv_img,(int(image_coor[i][0]), int(image_coor[i][1])), 1, 200, -1, 8, 0)
 
     #adding Gaussian noise
-    cv_img = cv_img + 50*np.random.normal(0, 0.4,cv_img.shape).astype(np.uint8)
+    #cv_img = cv_img + 50*np.random.normal(0, 0.4,cv_img.shape).astype(np.uint8)
 
     #rotate image by 180 degrees to get sonar image in correct orientation
     Rot_M = cv2.getRotationMatrix2D((Im_width/2, Im_height/2), 180, 1)
