@@ -62,6 +62,122 @@
     </xacro:regular_camera_plugin_macro>
   </xacro:macro>
 
+  <xacro:macro name="uw_depth_camera" params="namespace parent_link suffix *origin">
+    <xacro:uw_camera_plugin_macro
+      namespace="${namespace}"
+      suffix="${suffix}"
+      parent_link="${parent_link}"
+      topic="camera"
+      mass="0.1"
+      update_rate="30"
+      hfov="1.5125"
+      width="768"
+      height="492"
+      stddev="0.02"
+      scale="1.0">
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
+      <xacro:insert_block name="origin" />
+    </xacro:uw_camera_plugin_macro>
+  </xacro:macro>
+
+  <xacro:macro name="uw_camera_plugin_macro"
+    params="namespace suffix parent_link topic mass update_rate
+      hfov width height stddev scale
+      *inertia *origin">
+    <!-- Sensor link -->
+    <link name="${namespace}/camera${suffix}_link">
+      <inertial>
+        <xacro:insert_block name="inertia" />
+        <mass value="${mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="file://$(find uuv_sensor_ros_plugins)/meshes/oe14-372.dae" scale="${scale} ${scale} ${scale}"/>
+        </geometry>
+      </visual>
+      <xacro:no_collision/>
+    </link>
+
+    <joint name="${namespace}/camera${suffix}_joint" type="revolute">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent_link}" />
+      <child link="${namespace}/camera${suffix}_link" />
+      <limit upper="0" lower="0" effort="0" velocity="0" />
+      <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="${namespace}/camera${suffix}_link_optical">
+      <xacro:box_inertial x="0.0001" y="0.0001" z="0.0001" mass="0.001">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+      </xacro:box_inertial>
+      <collision>
+        <!-- todo: gazebo needs a collision volume or it will ignore the pose of
+           the joint that leads to this link (and assume it to be the identity) -->
+        <geometry>
+          <cylinder length="0.000001" radius="0.000001"/>
+        </geometry>
+        <origin xyz="0 0 0" rpy="0 ${0.5*pi} 0"/>
+      </collision>
+    </link>
+
+    <joint name="${namespace}/camera${suffix}_optical_joint" type="revolute">
+      <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+      <parent link="${namespace}/camera${suffix}_link"/>
+      <child link="${namespace}/camera${suffix}_link_optical"/>
+      <limit upper="0" lower="0" effort="0" velocity="0" />
+      <axis xyz="1 0 0"/>
+    </joint>
+
+    <gazebo reference="${namespace}/camera${suffix}_link">
+      <sensor type="depth" name="camera${suffix}">
+        <update_rate>${update_rate}</update_rate>
+        <camera name="camera${suffix}">
+          <horizontal_fov>${hfov}</horizontal_fov>
+          <image>
+            <width>${width}</width>
+            <height>${height}</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.05</near>
+            <far>3000</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>${stddev}</stddev>
+          </noise>
+        </camera>
+        <plugin name="camera${suffix}_controller" filename="libgazebo_ros_openni_kinect.so">
+          <baseline>0.2</baseline>
+          <alwaysOn>true</alwaysOn>
+          <!-- Keep this zero, update_rate in the parent <sensor> tag
+            will control the frame rate. -->
+          <updateRate>0.0</updateRate>
+          <cameraName>${namespace}/camera${suffix}</cameraName>
+          <imageTopicName>${topic}/depth/image_raw</imageTopicName>
+          <cameraInfoTopicName>${topic}/depth/camera_info</cameraInfoTopicName>
+          <depthImageTopicName>${topic}/depth/image_depth</depthImageTopicName>
+          <depthImageInfoTopicName>${topic}/depth/camera_info_depth</depthImageInfoTopicName>
+          <pointCloudTopicName>${topic}/depth/points</pointCloudTopicName>
+          <frameName>camera${suffix}_link_optical</frameName>
+          <pointCloudCutoff>2.5</pointCloudCutoff>
+          <distortionK1>0</distortionK1>
+          <distortionK2>0</distortionK2>
+          <distortionK3>0</distortionK3>
+          <distortionT1>0</distortionT1>
+          <distortionT2>0</distortionT2>
+          <CxPrime>0</CxPrime>
+          <Cx>0</Cx>
+          <Cy>0</Cy>
+          <focalLength>0</focalLength>
+          <hackBaseline>0</hackBaseline>
+        </plugin>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+
   <xacro:macro name="regular_camera_plugin_macro"
     params="namespace suffix parent_link topic mass update_rate
       hfov width height stddev scale
