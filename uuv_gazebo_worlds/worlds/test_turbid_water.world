@@ -42,9 +42,9 @@
           Note that it does NOT render an actual fog object into the scene. Just an illusion for the ViewPort or camera-->
       <fog>
         <color>0.1 0.2 0.3 1.0</color>
-        <type>linear</type>
-        <density>0.8</density>
-        <start>10</start>
+        <type>exp</type>
+        <density>1</density>
+        <start>1</start>
         <end>50</end>
       </fog>
     </scene>
@@ -90,7 +90,7 @@
 
     <!-- Bounding box with sea surface -->
     <include>
-      <uri>model://test_herkules_seabed</uri>
+      <uri>model://herkules_seabed</uri>
       <pose>0 0 0 0 0 0</pose>
     </include>
 
