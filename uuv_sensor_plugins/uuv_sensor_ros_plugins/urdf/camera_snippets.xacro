@@ -33,7 +33,7 @@
       parent_link="${parent_link}"
       topic="camera"
       mass="0.1"
-      update_rate="30"
+      update_rate="60"
       hfov="1.5125"
       width="768"
       height="492"
