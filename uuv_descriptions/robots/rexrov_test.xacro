@@ -22,9 +22,9 @@
   <xacro:include filename="$(find uuv_descriptions)/urdf/rexrov_base.xacro"/>
   <xacro:include filename="$(find uuv_descriptions)/urdf/rexrov.gazebo.xacro"/>
 
-  <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="top">
+  <!--xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="top">
     <origin xyz="7.5 0 15" rpy="0 1.52 0"/>
-  </xacro:default_camera>
+  </xacro:default_camera-->
 
   <!--<xacro:uw_depth_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="depth">
     <origin xyz="1.15 0.5 0.4" rpy="0 0.1 0"/>
@@ -74,9 +74,9 @@
     </gazebo>
   </xacro:rexrov_base>
 
-  <xacro:forward_multibeam_p900 namespace="$(arg namespace)" parent_link="$(arg namespace)/base_link">
+  <!--xacro:forward_multibeam_p900 namespace="$(arg namespace)" parent_link="$(arg namespace)/base_link">
     <origin xyz="1.4 0 0.65" rpy="0 0 0"/>
-  </xacro:forward_multibeam_p900>
+  </xacro:forward_multibeam_p900-->
 
   <!--<xacro:fl_multibeam_generic namespace="$(arg namespace)" parent_link="$(arg namespace)/base_link">
     <origin xyz="1.4 0 0.65" rpy="0 0 0"/>
