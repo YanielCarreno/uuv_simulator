@@ -33,7 +33,7 @@
       parent_link="${parent_link}"
       topic="camera"
       mass="0.1"
-      update_rate="30"
+      update_rate="60"
       hfov="1.5125"
       width="768"
       height="492"
@@ -63,7 +63,7 @@
   </xacro:macro>
 
   <xacro:macro name="uw_depth_camera" params="namespace parent_link suffix *origin">
-    <xacro:uw_camera_plugin_macro
+    <xacro:uw_depthcam_plugin_macro
       namespace="${namespace}"
       suffix="${suffix}"
       parent_link="${parent_link}"
@@ -77,10 +77,10 @@
       scale="1.0">
       <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
       <xacro:insert_block name="origin" />
-    </xacro:uw_camera_plugin_macro>
+    </xacro:uw_depthcam_plugin_macro>
   </xacro:macro>
 
-  <xacro:macro name="uw_camera_plugin_macro"
+  <xacro:macro name="uw_depthcam_plugin_macro"
     params="namespace suffix parent_link topic mass update_rate
       hfov width height stddev scale
       *inertia *origin">

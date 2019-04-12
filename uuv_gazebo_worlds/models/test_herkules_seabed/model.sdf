@@ -23,7 +23,7 @@
         <geometry>
           <mesh>
             <uri>model://herkules_seabed/meshes/herkules_seabed.dae</uri>
-            <scale>1.5 1.5 1.0</scale>
+            <scale>3 3 1.0</scale>
           </mesh>
         </geometry>
       </collision>
@@ -34,7 +34,7 @@
         <geometry>
           <mesh>
             <uri>model://herkules_seabed/meshes/herkules_seabed.dae</uri>
-            <scale>1.5 1.5 1.0</scale>
+            <scale>3 3 1.0</scale>
           </mesh>
         </geometry>
         <material>
@@ -52,7 +52,7 @@
         <cast_shadows>false</cast_shadows>
         <geometry>
           <box>                        
-            <size>140 140 0.1</size>
+            <size>300 300 0.1</size>
           </box>
         </geometry>                
         <material>
@@ -67,7 +67,7 @@
         <pose>0 0 -70.0 0 0 0</pose>        
         <geometry>
           <box>                        
-            <size>140 140 0.1</size>
+            <size>300 300 0.1</size>
           </box>
         </geometry>                
         <material>
@@ -79,10 +79,10 @@
       </visual>
 
       <visual name="north_wall">
-        <pose>0 70 -35.0 0 0 0</pose>        
+        <pose>0 150 -35.0 0 0 0</pose>        
         <geometry>
           <box>                        
-            <size>140 0.1 70</size>
+            <size>300 0.1 70</size>
           </box>
         </geometry>                
         <material>
@@ -94,10 +94,10 @@
       </visual>
 
       <visual name="south_wall">
-        <pose>0 -70 -35.0 0 0 0</pose>        
+        <pose>0 -150 -35.0 0 0 0</pose>        
         <geometry>
           <box>                        
-            <size>140 0.1 70</size>
+            <size>300 0.1 70</size>
           </box>
         </geometry>                
         <material>
@@ -109,10 +109,10 @@
       </visual>
 
       <visual name="east_wall">
-        <pose>70 0 -35.0 0 0 0</pose>        
+        <pose>150 0 -35.0 0 0 0</pose>        
         <geometry>
           <box>                        
-            <size>0.1 140 70</size>
+            <size>0.1 300 70</size>
           </box>
         </geometry>                
         <material>
@@ -124,10 +124,10 @@
       </visual>
 
       <visual name="west_wall">
-        <pose>-70 0 -35.0 0 0 0</pose>        
+        <pose>-150 0 -35.0 0 0 0</pose>        
         <geometry>
           <box>                        
-            <size>0.1 140 70</size>
+            <size>0.1 300 70</size>
           </box>
         </geometry>                
         <material>

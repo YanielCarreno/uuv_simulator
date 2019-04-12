@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+    <model name="world_camera">
+        <static>true</static>
+        <link name="world_cam_link">
+            <visual name="vis">
+            <geometry>
+                <box>
+                <size>0.1 0.1 0.1</size>
+                </box>
+            </geometry>
+            </visual>
+            <sensor type="camera" name="world_camera">
+                <update_rate>60.0</update_rate>
+                <camera name="world_camera">
+                <horizontal_fov>1.7</horizontal_fov>
+                <image>
+                    <width>800</width>
+                    <height>600</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.05</near>
+                    <far>3000</far>
+                </clip>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.001</stddev>
+                </noise>
+                </camera>
+                <plugin name="world_cam_controller" filename="libgazebo_ros_camera.so">
+                    <updateRate>0.0</updateRate>
+                    <cameraName>world/world_camera_top</cameraName>
+                    <!--frameName>camera${suffix}_link_optical</frameName-->
+                    
+
+                    <attenuationR>0.0</attenuationR>
+                    <attenuationG>0.0</attenuationG>
+                    <attenuationB>0.0</attenuationB>
+
+                    <backgroundR>0</backgroundR>
+                    <backgroundG>0</backgroundG>
+                    <backgroundB>0</backgroundB>
+
+                    <!-- required for ros depth cam -->
+                    <imageTopicName>/world_camera_image</imageTopicName>
+                    <cameraInfoTopicName>world_camera_info</cameraInfoTopicName>
+                    <pointCloudCutoff>10.0</pointCloudCutoff>
+                </plugin>
+            </sensor>
+        </link>
+    </model>
+</sdf>

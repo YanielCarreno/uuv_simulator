@@ -113,7 +113,7 @@
         <arg name="axis_z" value="$(arg axis_z)"/>
     </include>
 
-    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find uuv_gazebo)/rviz/rexrov_test_sonar.rviz"/>
+    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find uuv_gazebo)/rviz/rexrov_fls.rviz"/>
 
     <group if="$(arg set_timeout)">
         <include file="$(find uuv_assistants)/launch/set_simulation_timer.launch">
