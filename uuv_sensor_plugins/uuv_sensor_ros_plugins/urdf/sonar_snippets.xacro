@@ -191,60 +191,6 @@
   </gazebo>
   </xacro:macro>
 
-  <!-- modified version of Brazilian Institute of Robotic's FLS implementation in Gazebo -->
-  <xacro:macro name="forward_looking_multibeam_sonar"
-    params="namespace suffix parent_link topic mass update_rate
-      samples fov range_min range_max range_stddev mesh
-      *inertia *origin *visual">
-    <!-- Sensor link -->
-    <link name="${namespace}/sonar${suffix}_link">
-      <inertial>
-        <xacro:insert_block name="inertia" />
-        <mass value="${mass}" />
-        <origin xyz="0 0 0" rpy="0 0 0" />
-      </inertial>
-
-      <xacro:insert_block name="visual" />
-      <xacro:no_collision/>
-    </link>
-
-    <joint name="${namespace}_sonar${suffix}_joint" type="revolute">
-      <xacro:insert_block name="origin" />
-      <parent link="${parent_link}" />
-      <child link="${namespace}/sonar${suffix}_link" />
-      <limit upper="0" lower="0" effort="0" velocity="0" />
-      <axis xyz="1 0 0"/>
-    </joint>
-
-    <gazebo reference="${namespace}/sonar${suffix}_link">
-      <sensor name='FLSonar' type='camera'>
-        <plugin name="SonarVisual" filename="libuuv_gazebo_ros_flsonar_plugin.so" >
-            <topic>rexrov/FLSonar</topic>
-            <debug>1</debug>
-            <link_reference>${namespace}/sonar${suffix}_link</link_reference>
-            <horizontal_fov>${fov}</horizontal_fov>
-            <vfov>${fov}</vfov>
-            <bin_count>720</bin_count>
-            <beam_count>720</beam_count>
-            <image>
-                <width>720</width>
-                <height>720</height>
-                <format>RGB_FLOAT32</format>
-            </image>
-            <clip>
-                <near>1</near>
-                <far>5</far>
-            </clip>
-            <noise>
-                <type>gaussian</type>
-                <mean>0.0</mean>
-                <stddev>0.1</stddev>
-            </noise>
-        </plugin>  
-      </sensor>  
-    </gazebo>
-  </xacro:macro>
-
   <xacro:macro name="forward_looking_sonar"
     params="namespace suffix parent_link topic mass update_rate
       samples fov width height *inertia *origin *visual">

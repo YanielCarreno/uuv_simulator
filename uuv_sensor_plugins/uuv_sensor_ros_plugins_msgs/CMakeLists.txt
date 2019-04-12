@@ -14,8 +14,6 @@ add_message_files(
   PositionWithCovarianceStamped.msg
   ChemicalParticleConcentration.msg
   Salinity.msg
-  Sonar.msg
-  SonarStamped.msg
 )
 
 add_service_files(
