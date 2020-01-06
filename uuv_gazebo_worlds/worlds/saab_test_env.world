@@ -43,9 +43,9 @@
       <fog>
         <color>0.1 0.2 0.3 1.0</color>
         <type>exp</type>
-        <density>0.15</density>
+        <density>0.2</density>
         <start>1</start>
-        <end>50</end>
+        <end>60</end>
       </fog>
     </scene>
 
@@ -95,9 +95,17 @@
     </include>
 
     <include>
+      <uri>model://saab_garage_v0</uri>
+      <pose>15 0 -55 -1.57 0 0</pose>
+    </include>
+    <include>
+      <uri>model://measurement_cube</uri>
+      <pose>10 5 -55 1.57 0 0</pose>
+    </include>
+    <!--<include>
       <uri>model://bop_panel</uri>
       <pose>15 0 -59 0 0 0</pose>
-    </include>
+    </include> -->
 
     <!--include>
       <uri>model://world_camera</uri>
