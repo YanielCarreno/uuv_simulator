@@ -42,15 +42,10 @@
           Note that it does NOT render an actual fog object into the scene. Just an illusion for the ViewPort or camera-->
       <fog>
         <color>0.1 0.2 0.3 1.0</color>
-<<<<<<< HEAD
-        <type>linear</type>
-        <density>0.3</density>
-=======
         <type>exp</type>
-        <density>0.15</density>
->>>>>>> realistic-sonar-sim-48
+        <density>0.2</density>
         <start>1</start>
-        <end>50</end>
+        <end>60</end>
       </fog>
     </scene>
 
@@ -100,9 +95,17 @@
     </include>
 
     <include>
+      <uri>model://saab_garage_v0</uri>
+      <pose>15 0 -55 -1.57 0 0</pose>
+    </include>
+    <include>
+      <uri>model://measurement_cube</uri>
+      <pose>10 5 -55 1.57 0 0</pose>
+    </include>
+    <!--<include>
       <uri>model://bop_panel</uri>
       <pose>15 0 -59 0 0 0</pose>
-    </include>
+    </include> -->
 
     <!--include>
       <uri>model://world_camera</uri>
@@ -114,17 +117,11 @@
       <child>world_camera::link</child>
     </joint-->
 
-<<<<<<< HEAD
-    <model name="world_camera_top">
-      <static>true</static>
-      <pose>15 0 -25 0 1.57 0</pose>
-=======
     <!-- Change the world camera position to <pose>10 12 -52 0 0 -1.57<pose> 
     insted of <pose>15 0 -25 0 1.57 0</pose> -->
     <model name="world_camera_top">
       <static>true</static>
       <pose>10 12 -52 0 0 -1.57</pose>
->>>>>>> realistic-sonar-sim-48
       <link name="world_cam_link">
         <visual name="vis">
           <geometry>
