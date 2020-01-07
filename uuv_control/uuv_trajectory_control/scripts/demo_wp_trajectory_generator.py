@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright (c) 2016 The UUV Simulator Authors.
+# Copyright (c) 2016-2019 The UUV Simulator Authors.
 # All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +13,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+from __future__ import print_function
 import roslib
 import numpy as np
 import matplotlib.pyplot as plt
@@ -48,7 +48,7 @@ def run_generator(waypoint_set, interp_method):
         avg_time += toc - tic
         idx += 1
     avg_time /= idx
-    print 'Average processing time [s] =', avg_time
+    print('Average processing time [s] =', avg_time)
     fig = plt.figure()
     # Trajectory and heading 3D plot
     ax = fig.add_subplot(111, projection='3d')

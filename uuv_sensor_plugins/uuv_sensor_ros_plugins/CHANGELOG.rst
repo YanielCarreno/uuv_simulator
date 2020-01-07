@@ -2,6 +2,58 @@
 Changelog for package uuv_sensor_ros_plugins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.13 (2019-08-12)
+-------------------
+
+0.6.12 (2019-05-23)
+-------------------
+
+0.6.11 (2019-03-21)
+-------------------
+* Add new depends to catkin package
+  Signed-off-by: Will Baker <wbaker@houstonmechatronics.com>
+* Added fls implementation by Niels Bohr as explained in the following issue thread: https://github.com/uuvsimulator/uuv_simulator/issues/48, with the main code of the fls contained here: https://github.com/smarc-project/smarc_simulations/blob/master/smarc_gazebo_plugins/smarc_gazebo_ros_plugins/src/gazebo_ros_image_sonar.cpp. \n\n TODO: Modify FLS to be better representation (current FLS still abuses Depth cam), and integrate FLS into our project environment/requirement better
+  Add depends to pacakge.xml
+  # Conflicts:
+  #	uuv_descriptions/robots/rexrov_test.xacro
+  #	uuv_sensor_plugins/uuv_sensor_ros_plugins/CMakeLists.txt
+  #	uuv_sensor_plugins/uuv_sensor_ros_plugins/urdf/sonar_snippets.xacro
+  Signed-off-by: Will Baker <willcbaker@gmail.com>
+* Contributors: Will Baker
+
+0.6.10 (2019-02-28)
+-------------------
+* Fix errors from catkin_lint
+  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
+* Contributors: Musa Morena Marcusso Manhaes
+
+0.6.9 (2019-02-26)
+------------------
+
+0.6.8 (2019-02-14)
+------------------
+
+0.6.7 (2019-02-13)
+------------------
+* Fix copy Gazebo message files for ROS Buildfarm
+  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
+* Contributors: Musa Morena Marcusso Manhaes, Musa Morena Marcusso Manhães
+
+0.6.6 (2019-02-12)
+------------------
+* Fix gazebo_dev dependency
+  Signed-off-by: Musa Morena Marcusso Manhães <Musa.Marcusso@de.bosch.com>
+* Contributors: Musa Morena Marcusso Manhaes
+
+0.6.5 (2019-02-07)
+------------------
+
+0.6.4 (2019-02-03)
+------------------
+* FIX Dependency errors for ROS Buildfarm
+  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
+* Contributors: Musa Morena Marcusso Manhães
+
 0.6.3 (2018-12-13)
 ------------------
 * CHANGE Use lowercase strings for e-mail

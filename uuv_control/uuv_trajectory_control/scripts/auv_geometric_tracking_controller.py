@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright (c) 2016 The UUV Simulator Authors.
+# Copyright (c) 2016-2019 The UUV Simulator Authors.
 # All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ from uuv_gazebo_ros_plugins_msgs.msg import FloatStamped
 from uuv_control_msgs.msg import TrajectoryPoint
 from uuv_control_interfaces import DPControllerLocalPlanner
 import tf2_ros
-from tf.transformations import quaternion_matrix
+from tf_quaternion.transformations import quaternion_matrix
 
 
 class AUVGeometricTrackingController:
@@ -284,7 +284,7 @@ class AUVGeometricTrackingController:
         # Check for saturation
         max_angle = max(np.abs(fins))
         if max_angle >= self.max_fin_angle:
-            fins = fins * max_angle / self.max_fin_angle
+            fins = fins * self.max_fin_angle / max_angle
 
         thrust_force = self.thruster.tam_column * thrust
         self.thruster.publish_command(thrust_force[0])

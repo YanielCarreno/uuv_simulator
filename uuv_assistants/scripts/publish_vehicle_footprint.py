@@ -13,10 +13,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+from __future__ import print_function
 import rospy
 from copy import deepcopy
-from tf.transformations import euler_from_quaternion
+from tf_quaternion.transformations import euler_from_quaternion
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import PolygonStamped, Point32
 from visualization_msgs.msg import Marker
@@ -36,9 +36,9 @@ class VehicleFootprint:
             if scale > 0:
                 self._scale_footprint = scale
             else:
-                print 'Scale factor should be greater than zero'
+                print('Scale factor should be greater than zero')
         
-        print 'Footprint marker scale factor = ', self._scale_footprint
+        print('Footprint marker scale factor= ', self._scale_footprint)
 
         self._scale_label = 10
 
@@ -47,9 +47,9 @@ class VehicleFootprint:
             if scale > 0:
                 self._scale_label = scale
             else:
-                print 'Scale factor should be greater than zero'
+                print('Scale factor should be greater than zero')
         
-        print 'Label marker scale factor = ', self._scale_label
+        print('Label marker scale factor = ', self._scale_label)
 
         self._label_x_offset = 60
         if rospy.get_param('~label_x_offset'):
@@ -126,7 +126,7 @@ class VehicleFootprint:
         self._label_pub.publish(self._label_marker)
 
 if __name__ == '__main__':
-    print 'Generate RViz footprint and markers for 2D visualization'
+    print('Generate RViz footprint and markers for 2D visualization')
     rospy.init_node('generate_vehicle_footprint')
 
     try:

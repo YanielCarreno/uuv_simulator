@@ -6,6 +6,7 @@ add_definitions(-std=c++11)
 # set(CMAKE_BUILD_TYPE RelWithDebInfo)
 
 find_package(catkin REQUIRED COMPONENTS
+  gazebo_dev
   uuv_gazebo_plugins
   sensor_msgs
   image_transport
@@ -21,13 +22,11 @@ find_package(catkin REQUIRED COMPONENTS
   laser_geometry)
 
 find_package(Eigen3 REQUIRED)
-find_package(gazebo REQUIRED)
 find_package(OGRE REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(Protobuf REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
 set(UUV_SENSOR_ROS_PLUGINS_LIST "")
 
 # Add Gazebo custom protobuf messages
@@ -51,17 +50,8 @@ message(STATUS "GAZEBO_MSG_INCLUDE_DIRS = " ${GAZEBO_MSG_INCLUDE_DIRS})
 
 file(GLOB msgs msgs/*.proto)
 
-protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${msgs})
-
 catkin_package(
   INCLUDE_DIRS include
-    ${CMAKE_CURRENT_BINARY_DIR} # for generated messages
-    ${GAZEBO_MSG_INCLUDE_DIRS}
-    ${OGRE_INCLUDE_DIRS}
-    ${OGRE_Paging_INCLUDE_DIRS}
-    ${OpenCV_INCLUDE_DIRS}
-    ${EIGEN3_INCLUDE_DIR}
-  DEPENDS Eigen3 gazebo
   LIBRARIES
     uuv_gazebo_ros_base_model_plugin
     uuv_gazebo_ros_base_sensor_plugin
@@ -74,15 +64,22 @@ catkin_package(
     uuv_gazebo_ros_imu_plugin
     uuv_gazebo_ros_rpt_plugin
     uuv_gazebo_ros_camera_plugin
-<<<<<<< HEAD
-    uuv_gazebo_ros_flsonar_plugin
-=======
->>>>>>> realistic-sonar-sim-48
     image_sonar_ros_plugin
   CATKIN_DEPENDS
+    gazebo_dev
     uuv_gazebo_plugins
     sensor_msgs
+    geometry_msgs
+    std_msgs
+    roscpp
+    tf
+    gazebo_plugins
     uuv_sensor_ros_plugins_msgs
+    message_filters
+    tf2_ros
+    tf2
+    image_transport
+    laser_geometry
 )
 
 ###########
@@ -93,7 +90,7 @@ include_directories(
   ${PROJECT_SOURCE_DIR}/include
   ${CMAKE_CURRENT_BINARY_DIR} # for generated messages
   ${catkin_INCLUDE_DIRS}
-  ${EIGEN3_INCLUDE_DIR}
+  ${EIGEN3_INCLUDE_DIRS}
   ${GAZEBO_INCLUDE_DIRS}
   ${GAZEBO_MSG_INCLUDE_DIRS}
   ${CMAKE_CURRENT_BINARY_DIR}
@@ -101,19 +98,16 @@ include_directories(
   ${OGRE_Paging_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIR}
-  ${EIGEN3_INCLUDE_DIR}
 )
 
 link_directories(
   ${GAZEBO_LIBRARY_DIRS}
 )
 
+protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${msgs})
 add_library(uuv_sensor_gazebo_msgs SHARED ${PROTO_SRCS})
 target_link_libraries(uuv_sensor_gazebo_msgs ${PROTOBUF_LIBRARY} ${GAZEBO_LIBRARIES})
-
 list(APPEND UUV_SENSOR_ROS_PLUGINS_LIST uuv_sensor_gazebo_msgs)
-
-file(COPY ${CMAKE_CURRENT_BINARY_DIR}/ DESTINATION ${CATKIN_DEVEL_PREFIX}/include/${PACKAGE_NAME} FILES_MATCHING PATTERN "*.pb.*")
 
 ###############################################################################
 
@@ -220,6 +214,7 @@ target_link_libraries(uuv_gazebo_ros_camera_plugin ${catkin_LIBRARIES} ${GAZEBO_
 add_dependencies(uuv_gazebo_ros_camera_plugin ${catkin_EXPORTED_TARGETS})
 list(APPEND UUV_SENSOR_ROS_PLUGINS_LIST uuv_gazebo_ros_camera_plugin)
 
+<<<<<<< HEAD
 
 ###############################################################################
 
@@ -229,6 +224,8 @@ add_dependencies(image_sonar_ros_plugin ${catkin_EXPORTED_TARGETS})
 list(APPEND UUV_SENSOR_ROS_PLUGINS_LIST image_sonar_ros_plugin)
 
 
+=======
+>>>>>>> master
 ###############################################################################
 
 add_library(image_sonar_ros_plugin src/gazebo_ros_image_sonar.cpp)

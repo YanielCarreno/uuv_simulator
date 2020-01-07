@@ -2,6 +2,61 @@
 Changelog for package uuv_assistants
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.13 (2019-08-12)
+-------------------
+* Create tf_quaternion Python package
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Replace geometry.tf.transformations by local transformations package
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add tf.transformations from geometry package due to geometry not being ported for Python 3
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Fixing Python 3 compatibility issues for scripts
+  Related to issue `#268 <https://github.com/uuvsimulator/uuv_simulator/issues/268>`_
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Contributors: Musa Morena Marcusso Manhães
+
+0.6.12 (2019-05-23)
+-------------------
+
+0.6.11 (2019-03-21)
+-------------------
+
+0.6.10 (2019-02-28)
+-------------------
+* Fix package name to uuv_message_to_tf node
+  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
+* Fix name of package for uuv_message_to_tf
+  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
+* Add message_to_tf to package configuration
+  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
+* Add message_to_tf node
+  message_to_tf node is available only until ROS kinetic
+  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
+* Contributors: Musa Morena Marcusso Manhaes
+
+0.6.9 (2019-02-26)
+------------------
+
+0.6.8 (2019-02-14)
+------------------
+* Fix paths to launch files after refactor
+  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
+* Align tutorials and templates to new locations
+  Signed-off-by: Tim Clephas <tim.clephas@nobleo.nl>
+* Contributors: Musa Morena Marcusso Manhaes, Tim Clephas
+
+0.6.7 (2019-02-13)
+------------------
+
+0.6.6 (2019-02-12)
+------------------
+
+0.6.5 (2019-02-07)
+------------------
+
+0.6.4 (2019-02-03)
+------------------
+
 0.6.3 (2018-12-13)
 ------------------
 * CHANGE Use lowercase strings for e-mail

@@ -2,6 +2,41 @@
 Changelog for package uuv_simulator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.13 (2019-08-12)
+-------------------
+
+0.6.12 (2019-05-23)
+-------------------
+
+0.6.11 (2019-03-21)
+-------------------
+
+0.6.10 (2019-02-28)
+-------------------
+
+0.6.9 (2019-02-26)
+------------------
+
+0.6.8 (2019-02-14)
+------------------
+
+0.6.7 (2019-02-13)
+------------------
+
+0.6.6 (2019-02-12)
+------------------
+
+0.6.5 (2019-02-07)
+------------------
+* RM Dependency to uuv_tutorials
+* Contributors: Musa Morena Marcusso Manhães
+
+0.6.4 (2019-02-03)
+------------------
+* Add uuv_gazebo_worlds to metapackage
+  Signed-off-by: Musa Morena Marcusso Manhães <Musa.Marcusso@de.bosch.com>
+* Contributors: Musa Morena Marcusso Manhães
+
 0.6.3 (2018-12-13)
 ------------------
 * CHANGE Use lowercase strings for e-mail

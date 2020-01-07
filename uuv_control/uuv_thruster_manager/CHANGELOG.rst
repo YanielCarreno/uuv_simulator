@@ -2,6 +2,67 @@
 Changelog for package uuv_thruster_manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.13 (2019-08-12)
+-------------------
+* Add test dependencies
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add rostests
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add unit tests
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Update license header
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Update license header
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Update license header and add docstrings
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Fix indentation of docstring
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add docstrings
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add test TAM configuration
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add mock robot description for thruster manager tests
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add mock configuration for thruster manager tests
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Fixing Python 3 compatibility issues for scripts
+  Related to issue `#268 <https://github.com/uuvsimulator/uuv_simulator/issues/268>`_
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Contributors: Musa Morena Marcusso Manhães
+
+0.6.12 (2019-05-23)
+-------------------
+
+0.6.11 (2019-03-21)
+-------------------
+
+0.6.10 (2019-02-28)
+-------------------
+* Fix errors from catkin_lint
+  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
+* Contributors: Musa Morena Marcusso Manhaes
+
+0.6.9 (2019-02-26)
+------------------
+
+0.6.8 (2019-02-14)
+------------------
+
+0.6.7 (2019-02-13)
+------------------
+
+0.6.6 (2019-02-12)
+------------------
+
+0.6.5 (2019-02-07)
+------------------
+
+0.6.4 (2019-02-03)
+------------------
+* FIX Dependency errors for ROS Buildfarm
+  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
+  
 0.6.3 (2018-12-13)
 ------------------
 * CHANGE Use lowercase strings for e-mail

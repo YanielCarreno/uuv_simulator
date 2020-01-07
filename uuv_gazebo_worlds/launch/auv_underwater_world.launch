@@ -1,3 +1,7 @@
+<!-- 
+Underwater environment with the ODE physics engine configured for vehicles using the 
+[fin plugin](https://github.com/uuvsimulator/uuv_simulator/blob/master/uuv_gazebo_plugins/uuv_gazebo_ros_plugins/src/FinROSPlugin.cc)
+-->
 <launch>
     <arg name="gui" default="true"/>
     <arg name="paused" default="false"/>
@@ -24,7 +28,7 @@
         <rosparam subst_value="true">
           meshes:
               sea_surface:
-                  mesh: package://uuv_descriptions/Media/models/sea_surface_1000m_x_1000m.dae
+                  mesh: package://uuv_gazebo_worlds/Media/models/sea_surface_1000m_x_1000m.dae
                   model: sea_surface
                   scale: [2, 2, 1]
               sea_bottom:

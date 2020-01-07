@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 2.8.3)
 project(uuv_thruster_manager)
 
 find_package(catkin REQUIRED COMPONENTS
-  std_msgs 
-  message_generation)
+  message_generation
+  std_msgs)
 
 catkin_python_setup()
 
@@ -22,7 +22,10 @@ generate_messages(
   std_msgs
 )
 
-catkin_package(CATKIN_DEPENDS message_runtime)
+catkin_package(
+  CATKIN_DEPENDS 
+    std_msgs 
+    message_runtime)
 
 catkin_install_python(PROGRAMS scripts/thruster_allocator.py
                       DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
@@ -30,3 +33,16 @@ catkin_install_python(PROGRAMS scripts/thruster_allocator.py
 install(DIRECTORY launch config
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
         PATTERN "*~" EXCLUDE)
+
+if (CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  foreach(T
+      test/test_thrusters.test
+      test/test_thruster_allocator_x_axis.test
+      test/test_thruster_allocator_y_axis.test
+      test/test_thruster_allocator_z_axis.test
+      test/test_thruster_manager_proportional_correct.test
+      )
+     add_rostest(${T})
+  endforeach()
+endif()

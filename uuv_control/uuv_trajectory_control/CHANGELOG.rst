@@ -2,6 +2,88 @@
 Changelog for package uuv_trajectory_control
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.13 (2019-08-12)
+-------------------
+* Fix PID controller node shebang
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add private log module
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Update license header
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add docstrings
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add docstrings and update license header
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Set conditional import for the casadi package
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add logger from package's _log module
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Update license header
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Update test configuration
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Update license headers
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Adding docstrings and updating license headers
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Fix import local waypoint module
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Fix module docstring breakline
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add missing HelicalSegment to module
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add local logging module
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add module docstring
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add uuv_assistants dependency to reach tf_quaternion package
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Replace geometry.tf.transformations by local transformations package
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add docstrings and update license headers
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Add module docstring and update license header
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Contributors: Musa Morena Marcusso Manhães
+
+0.6.12 (2019-05-23)
+-------------------
+
+0.6.11 (2019-03-21)
+-------------------
+* Fix normalization of fin angle for saturation
+  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
+* Contributors: Musa Morena Marcusso Manhães
+
+0.6.10 (2019-02-28)
+-------------------
+* Fix errors from catkin_lint
+  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
+* Fix non-executables
+  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
+* Contributors: Musa Morena Marcusso Manhaes
+
+0.6.9 (2019-02-26)
+------------------
+
+0.6.8 (2019-02-14)
+------------------
+
+0.6.7 (2019-02-13)
+------------------
+
+0.6.6 (2019-02-12)
+------------------
+
+0.6.5 (2019-02-07)
+------------------
+
+0.6.4 (2019-02-03)
+------------------
+* FIX Dependency errors for ROS Buildfarm
+  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
+* Contributors: Musa Morena Marcusso Manhães
+
 0.6.3 (2018-12-13)
 ------------------
 * CHANGE Use lowercase strings for e-mail
