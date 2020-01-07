@@ -214,18 +214,6 @@ target_link_libraries(uuv_gazebo_ros_camera_plugin ${catkin_LIBRARIES} ${GAZEBO_
 add_dependencies(uuv_gazebo_ros_camera_plugin ${catkin_EXPORTED_TARGETS})
 list(APPEND UUV_SENSOR_ROS_PLUGINS_LIST uuv_gazebo_ros_camera_plugin)
 
-<<<<<<< HEAD
-
-###############################################################################
-
-add_library(image_sonar_ros_plugin src/gazebo_ros_image_sonar.cpp)
-target_link_libraries(image_sonar_ros_plugin ${OGRE_LIBRARIES} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
-add_dependencies(image_sonar_ros_plugin ${catkin_EXPORTED_TARGETS})
-list(APPEND UUV_SENSOR_ROS_PLUGINS_LIST image_sonar_ros_plugin)
-
-
-=======
->>>>>>> master
 ###############################################################################
 
 add_library(image_sonar_ros_plugin src/gazebo_ros_image_sonar.cpp)
