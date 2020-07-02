@@ -65,7 +65,7 @@
       samples="768"
       fov="2.27"
       range_min="1.0"
-      range_max="100.0"
+      range_max="50.0"
       range_stddev="0.027"
       mesh="">
       <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
@@ -102,31 +102,6 @@
     </xacro:multibeam_sonar>
   </xacro:macro>
 
-  <xacro:macro name="fl_multibeam_generic" params="namespace parent_link *origin">
-    <xacro:forward_looking_multibeam_sonar
-      namespace="${namespace}"
-      suffix=""
-      parent_link="${parent_link}"
-      topic="sonar"
-      mass="0.02"
-      update_rate="15"
-      samples="512"
-      fov="1.5708"
-      range_min="1.0"
-      range_max="100.0"
-      range_stddev="0.027"
-      mesh="">
-      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
-      <xacro:insert_block name="origin" />
-      <visual>
-        <geometry>
-          <mesh filename="file://$(find uuv_sensor_ros_plugins)/meshes/p900.dae" scale="1 1 1"/>
-        </geometry>
-      </visual>
-    </xacro:forward_looking_multibeam_sonar>
-  </xacro:macro>
-
-  <!-- xacro for multibeam_sonar -->
   <xacro:macro name="multibeam_sonar"
     params="namespace suffix parent_link topic mass update_rate
       samples fov range_min range_max range_stddev mesh
@@ -152,11 +127,9 @@
   </joint>
 
   <gazebo reference="${namespace}/sonar${suffix}_link">
-    <sensor type="gpu_ray" name="sonar${suffix}">
+    <sensor type="ray" name="sonar${suffix}">
       <pose>0 0 0 0 0 0</pose>
-
-      <!--Change value here to make sonar beams visible or not-->
-      <visualize>true</visualize> 
+      <visualize>true</visualize>
       <update_rate>${update_rate}</update_rate>
       <ray>
         <scan>
@@ -178,7 +151,7 @@
           <stddev>${range_stddev}</stddev>
         </noise>
       </ray>
-      <plugin name="sonar${suffix}_controller" filename="libgazebo_ros_gpu_laser.so">
+      <plugin name="sonar${suffix}_controller" filename="libgazebo_ros_laser.so">
         <topicName>${topic}</topicName>
         <frameName>sonar${suffix}_link</frameName>
       </plugin>
@@ -190,69 +163,4 @@
     </sensor>
   </gazebo>
   </xacro:macro>
-
-  <xacro:macro name="forward_looking_sonar"
-    params="namespace suffix parent_link topic mass update_rate
-      samples fov width height *inertia *origin *visual">
-    <!-- Sensor link -->
-    <link name="${namespace}/forward_sonar${suffix}_link">
-      <inertial>
-        <xacro:insert_block name="inertia" />
-        <mass value="${mass}" />
-        <origin xyz="0 0 0" rpy="0 0 0" />
-      </inertial>
-      <visual>
-        <geometry>
-          <mesh filename="file://$(find uuv_sensor_ros_plugins)/meshes/oe14-372.dae" scale="1 1 1"/>
-        </geometry>
-      </visual>
-
-      <!-- <xacro:insert_block name="visual" /> -->
-      <xacro:no_collision/>
-    </link>
-
-    <joint name="${namespace}_forward_sonar${suffix}_joint" type="revolute">
-      <xacro:insert_block name="origin" />
-      <parent link="${parent_link}" />
-      <child link="${namespace}/forward_sonar${suffix}_link" />
-      <limit upper="0" lower="0" effort="0" velocity="0" />
-      <axis xyz="1 0 0"/>
-    </joint>
-
-  
-    <gazebo reference="${namespace}/forward_sonar${suffix}_link">
-      <sensor name="${namespace}/image_sonar" type="depth">
-        <camera>
-          <horizontal_fov>${fov}</horizontal_fov>
-          <image>
-            <width>${width}</width>
-            <height>${height}</height>
-            <format>R8G8B8</format>
-          </image>
-          <clip>
-            <near>0.1</near>
-            <far>17</far>
-          </clip>
-          <save enabled="false"> <!--Keeping save disabled to avoid filesystem overload -->
-            <path>/tmp/camera</path>
-          </save>
-        </camera>
-	      <plugin filename="libimage_sonar_ros_plugin.so" name="forward_sonar${suffix}_controller">
-		      <topicName>${topic}</topicName>
-          <frameName>forward_sonar${suffix}_optical_frame</frameName>
-        </plugin>
-        <always_on>true</always_on>
-	      <update_rate>${update_rate}</update_rate>
-      </sensor>
-    </gazebo>
-
-	<joint name="${namespace}/forward_sonar${suffix}_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
-      <parent link="${namespace}/forward_sonar${suffix}_link"/>
-      <child link="${namespace}/forward_sonar${suffix}_optical_frame"/>
-    </joint>
-	
-	<link name="${namespace}/forward_sonar${suffix}_optical_frame"/>
-  </xacro:macro>
-
 </robot>
