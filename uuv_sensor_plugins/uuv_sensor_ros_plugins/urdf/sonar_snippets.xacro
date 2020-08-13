@@ -36,7 +36,7 @@
       samples="60"
       fov="${pi/3.0}"
       range_min="1.0"
-      range_max="200.0"
+      range_max="40.0"
       range_stddev="0.027"
       mesh="">
       <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
@@ -62,7 +62,7 @@
       samples="768"
       fov="2.27"
       range_min="1.0"
-      range_max="100.0"
+      range_max="40.0"
       range_stddev="0.027"
       mesh="">
       <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
@@ -86,7 +86,7 @@
       samples="512"
       fov="1.5708"
       range_min="1.0"
-      range_max="100.0"
+      range_max="40.0"
       range_stddev="0.027"
       mesh="">
       <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
@@ -110,7 +110,7 @@
       samples="512"
       fov="1.5708"
       range_min="1.0"
-      range_max="100.0"
+      range_max="40.0"
       range_stddev="0.027"
       mesh="">
       <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
